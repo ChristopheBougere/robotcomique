@@ -1,0 +1,19 @@
+service: sansserveur-robotcomique
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${opt:stage, 'staging'}
+  region: ${opt:region, 'eu-west-1'}
+
+plugins:
+  - serverless-local-schedule
+  - serverless-dotenv-plugin
+
+functions:
+  faas-and-furious:
+    handler: src/functions/faas-and-furious/index.handler
+    events:
+      - schedule: # Run at 10:00 am (Paris time) every day
+          rate: cron(0 10 * * ? *)
+          timezone: Europe/Paris

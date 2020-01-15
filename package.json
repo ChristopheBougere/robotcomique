@@ -1,0 +1,22 @@
+{
+  "name": "robotcomique",
+  "version": "1.0.0",
+  "description": "A bot that posts a webcomic everyday on slack.",
+  "keywords": [
+    "FaaS and Furious",
+    "Slack bot"
+  ],
+  "author": "Christophe Bougère <christophe.bougere@gmail.com>",
+  "license": "Unlicense",
+  "devDependencies": {
+    "serverless": "^1.61.1",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-local-schedule": "^0.1.6"
+  },
+  "dependencies": {
+    "@slack/webhook": "^5.0.2",
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.0",
+    "rss-parser": "^3.7.3"
+  }
+}
