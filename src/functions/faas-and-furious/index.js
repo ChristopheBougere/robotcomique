@@ -57,7 +57,8 @@ const handleRssItem = async item => {
 const handler = async () => {
   const feed = await parser.parseURL('https://faasandfurious.com/feed.xml');
   console.log('feed', JSON.stringify(feed), null, 2);
-  if (!(await Promise.all(feed.items.map(handleRssItem))).some(r => r)) {
+  const newComics = await Promise.all(feed.items.map(handleRssItem));
+  if (process.env.ONLY_NEW !== 'true' && !newComics.some(r => r)) {
     console.log('nothing new, pick a random webcomic then');
     const lastId = Math.max(...feed.items.map(({ guid }) => guid.split('/').pop()));
     const randomId = Math.floor(Math.random() * lastId) + 1;
